@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "../Logger/Logger.h"
+#include "../ECS/ECS.h"
 #include <SDL.h>
 #include <SDL2/SDL_image.h>
 #include <glm/glm.hpp>
@@ -56,13 +57,9 @@ void Game::Initialize() {
   return;
 }
 
-glm::vec2 playerPosition;
-glm::vec2 playerVelocity;
-
 void Game::Setup() {
-
-  playerPosition = glm::vec2(10.0f, 20.0f);
-  playerVelocity = glm::vec2(100.0f, 5.0f);
+  //TODO:
+  // Create entity  tank = registry.CreateEntity();
   
 }
 
@@ -73,13 +70,8 @@ void Game::Update() {
   if(timeToWait > 0 && timeToWait <= MILLISECONDS_PER_FRAME) {
     SDL_Delay(timeToWait);
   }
-
-  double deltaTime = (SDL_GetTicks64() - millisecondsPreviousFrame) / 1000.0;
   
   millisecondsPreviousFrame = SDL_GetTicks64();
-
-  playerPosition.x += playerVelocity.x * deltaTime;
-  playerPosition.y += playerVelocity.y * deltaTime;
 
 }
 
@@ -114,19 +106,6 @@ void Game::ProcessInput() {
 void Game::Render() {
   SDL_SetRenderDrawColor(renderer, 21, 21, 21, 255);
   SDL_RenderClear(renderer);
-
-  SDL_Surface *surface = IMG_Load("./assets/images/tank-tiger-right.png");
-  SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-  SDL_FreeSurface(surface);
-
-  SDL_Rect dstRect = {
-                      static_cast<int>(playerPosition.x), 
-                      static_cast<int>(playerPosition.y), 
-                      32, 
-                      32
-                    };
-
-  SDL_RenderCopy(renderer, texture, NULL, &dstRect);
 
   SDL_RenderPresent(renderer);
 }
