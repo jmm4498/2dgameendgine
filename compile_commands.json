@@ -1,0 +1,19 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++23",
+      "-I./libs/",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-o",
+      "gameengine",
+      "src/Main.cpp"
+    ],
+    "directory": "/home/jmm1205/2dgameengine",
+    "file": "/home/jmm1205/2dgameengine/src/Main.cpp",
+    "output": "/home/jmm1205/2dgameengine/gameengine"
+  }
+]
