@@ -1,7 +1,7 @@
 # Declare variables
 CC = g++
 LANG_STD = -std=c++23
-COMPILER_FLAGS = -Wall -Wfatal-errors
+COMPILER_FLAGS = -Wall -Wfatal-errors -g -O0
 INCLUDE_PATH = -I"./libs/"
 SRC_FILES = src/*.cpp \
 			src/Game/*.cpp \
