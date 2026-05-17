@@ -19,7 +19,7 @@ Game::~Game() {
 void Game::Initialize() {
   
   if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-    Logger::Err("Error initializing SDL.");
+    Logger::Err("Error initializing SDL. <ERR>: %s:", SDL_GetError());
     return;
   }
 
@@ -37,14 +37,14 @@ void Game::Initialize() {
                             SDL_WINDOW_BORDERLESS
                             );
   if(!window) {
-    Logger::Err("Error creating SDL Window");
+    Logger::Err("Error creating SDL Window. <ERR>: %s:", SDL_GetError());
     return;
   }
 
   renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
   if(!renderer) {
-    Logger::Err("Error creating SDL Renderer");
+    Logger::Err("Error creating SDL Renderer. <ERR>: %s:", SDL_GetError());
     return;
   }
 
